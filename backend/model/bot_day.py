@@ -12,7 +12,7 @@ class Bot_daily():
             con = mysql_pool.get_connection()
             cursor = con.cursor(dictionary=True)
             cursor.execute(
-                "SELECT radar_img_url FROM radar_data ORDER BY created_at DESC LIMIT 1")
+                "SELECT radar_img_url FROM radar_data ORDER BY radar_time DESC LIMIT 1")
             data = cursor.fetchone()
             if data:
                 return data.get("radar_img_url")

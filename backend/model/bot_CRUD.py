@@ -18,9 +18,9 @@ def create_webhook_data(email, webhook_url: str, city: str, notify_time: str):
         user_email = search_user_with_email(email, cursor)
         if user_email:
             return {"error": True, "message": "此信箱已被註冊"}
-        query = "INSERT INTO webhook (email, webhook_url, city, notify_time, last_update)" \
-            "VALUES(%s, %s, %s, %s, %s)"
-        params = (email, webhook_url, city, notify_time, today)
+        query = "INSERT INTO webhook (email, webhook_url, city, notify_time)" \
+            "VALUES(%s, %s, %s, %s)"
+        params = (email, webhook_url, city, notify_time)
         cursor.execute(query, params)
         con.commit()
         return {"ok": True}
